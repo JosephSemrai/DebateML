@@ -113,4 +113,34 @@ svg {
   transform: translateZ(0px);
 }
 
+.button {
+    font-family: "Montserrat";
 
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  background: transparent;
+  padding: 14px 35px;
+  margin: 20px;
+  border: 2px solid;
+  border-color: var(--text-color);
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+.button:active {
+  background-size: 100%;
+  -webkit-transition: 0s ease-in-out;
+  transition: 0s ease-in-out;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:hover {
+  background: var(--bg-color) radial-gradient(circle, transparent 1%, var(--bg-color) 1%) center center/15000%;
+}
