@@ -6,58 +6,66 @@
  <div id="home_wave">
 </div>
 
-          <a href="{% url 'index' %}"><button class="btn btn-primary m-3">  <i class="fas fa-home"></i>
- Go back</button></a>
+<div class="d-flex flex-column" style="max-height:100vh;">
 
-{# 1. BUTTON TO TRIGGER THE ACTION #}
-<div class="card m-3"">
-<div class="card-body">
-  <div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
-  <i class="fas fa-download"></i>
-  <h3>Drop Documents or Folders Here to Upload</h3>
+  <a href="{% url 'index' %}"><button class="btn btn-primary m-3">  <i class="fas fa-home"></i>
+    Go back</button></a>
+   
+   {# 1. BUTTON TO TRIGGER THE ACTION #}
+   <div class="card m-3"">
+   <div class="card-body">
+     <div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
+     <i class="fas fa-download"></i>
+     <h3>Drop Documents or Folders Here to Upload</h3>
+   </div>
+   <button type="button" class="btn btn-primary js-upload-photos">
+     <span class="glyphicon glyphicon-cloud-upload"></span> Upload Documents
+   </button>
+   
+   {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+   <input id="fileupload" type="file" name="document" multiple style="display: none;" data-url="{% url 'upload' %}"
+     data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+   
+   
+   </div>
+   </div>
+   
+   
+   
+   
+   {# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}
+   <!-- Progress -->
+   <div class="card m-3" id="card-progress">
+     <div class="card-body">
+       <h5 class="card-title" id="upload-title">Uploading...</h5>
+       <h6 class="card-subtitle mb-2 text-muted">Thank you for helping out!</h6>
+       <p class="card-text">Please remember, we do not store any information other than the file that you upload. You still have all your rights to your document(s), and we will never profit off of your speeches.</p>
+       <p class="card-text">If you'd like to have your file(s) deleted, just contact me at <a href = "mailto: mail@josephsemrai.com">mail@josephsemrai.com</a></p>
+       <div class="progress-bar" style="border-radius:4px;" role="progressbar" style="width: 0%;">0%</div>
+     </div>
+   </div>
+   
+   <div class="card m-3 overflow-auto">
+     <h4 class="m-3">Previously Uploaded Speeches</h4>
+   <table id="gallery" class="table">
+     <thead>
+       <tr>
+         <th style="border-top: none; border-bottom-color:darkgray;">Speech Name</th>
+         <th style="border-top: none; border-bottom-color:darkgray;">Training Status</th>
+
+       </tr>
+     </thead>
+     <tbody>
+       {% for document in documents %}
+       <tr>
+         <td><a href="{{ document.document.url }}">{{ document.document.name }}</a></td>
+         <td><a href="">TS: {{ document.document.status }}</a></td>
+       </tr>
+       {% endfor %}
+     </tbody>
+   </table>
+   </div>
+   
 </div>
-<button type="button" class="btn btn-primary js-upload-photos">
-  <span class="glyphicon glyphicon-cloud-upload"></span> Upload Documents
-</button>
-
-{# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
-<input id="fileupload" type="file" name="document" multiple style="display: none;" data-url="{% url 'upload' %}"
-  data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
-
-
-</div>
-</div>
-
-
-
-
-{# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}
-<!-- Progress -->
-<div class="card m-3" id="card-progress">
-  <div class="card-body">
-    <h5 class="card-title" id="upload-title">Uploading...</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Thank you for helping out!</h6>
-    <p class="card-text">Please remember, we do not store any information other than the file that you upload. You still have all your rights to your document(s), and we will never profit off of your speeches.</p>
-    <p class="card-text">If you'd like to have your file(s) deleted, just contact me at <a href = "mailto: mail@josephsemrai.com">mail@josephsemrai.com</a></p>
-    <div class="progress-bar" style="border-radius:4px;" role="progressbar" style="width: 0%;">0%</div>
-  </div>
-</div>
-
-<div class="card m-3">
-<table id="gallery" class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Previously Uploaded Speeches</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for document in documents %}
-    <tr>
-      <td><a href="{{ document.document.url }}">{{ document.document.name }}</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-</div>
-
+         
 {% endblock %}
