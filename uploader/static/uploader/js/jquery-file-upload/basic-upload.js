@@ -16,6 +16,29 @@ $(function () {
       $('#card-progress').show();
       $("#upload-title").text("Uploading...");
     },
+    add: function (e, data) {
+      var goUpload = true;
+      var uploadFile = data.files[0];
+      if (!(/\.(doc|docx|html|htm|odt|pdf|xls|xlsx|ods|ppt|pptx|txt)$/i).test(uploadFile.name)) {
+          $("#errorMessage").text("File name: " + uploadFile.name + " | You can only upload document files (doc, docx, html, htm, odt, pdf, xls, xlsx, ods, ppt, pptx, txt).");
+          $("#errorDiv").removeClass('d-none');
+          goUpload = false;
+      }
+      if (uploadFile.size > 10000000) { // 10mb
+        $("#errorMessage").text("File name: " + uploadFile.name + " | Please upload a smaller document, the max size is 10MB");
+        $("#errorDiv").removeClass('d-none');
+          goUpload = false;
+      }
+
+      if (uploadFile.size === 0) { // 10mb
+        $("#errorMessage").text("File name: " + uploadFile.name + " | It looks like you uploaded a file with nothing in it. Is it a shortcut?");
+        $("#errorDiv").removeClass('d-none');
+        goUpload = false;
+    }
+      if (goUpload == true) {
+          data.submit();
+      }
+    },
     stop: function (e) {
       /* 3. WHEN THE UPLOADING PROCESS FINALIZE, HIDE THE MODAL */
       $('#card-progress').show();
