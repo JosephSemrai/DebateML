@@ -1,1 +1,2 @@
-web: gunicorn debateml.wsgi:application --log-file -
+web: gunicorn debatesite.wsgi
+heroku ps:scale web=1
