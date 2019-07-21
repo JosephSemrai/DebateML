@@ -19,7 +19,7 @@ $(function () {
     stop: function (e) {
       /* 3. WHEN THE UPLOADING PROCESS FINALIZE, HIDE THE MODAL */
       $('#card-progress').show();
-      $("#upload-title").text("Finished uploading your file(s)! 🎉");
+      $("#upload-title").text("Finished uploading! 🎉");
     },
     progressall: function (e, data) {
       /* 4. UPDATE THE PROGRESS BAR */
