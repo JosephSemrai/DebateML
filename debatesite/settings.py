@@ -26,7 +26,7 @@ SECRET_KEY = 'd*suj2zbl!8(%1yc)ymatx_)+e=y_&0bmhvww#him*guf$i^b5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','debateml.herokuapp.com']
 
 
 # Application definition
