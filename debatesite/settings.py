@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,24 +76,9 @@ WSGI_APPLICATION = 'debatesite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-#FOR TESTING
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
-#FOR DEPLOYMENT
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'postgres',
-#         'USER': 'postgres',
-#         'HOST': 'db',
-#         'PORT': 5432,
-#     }
-# }
+
+
 
 
 # Password validation
@@ -135,6 +121,10 @@ USE_TZ = True
 USE_S3 = os.getenv('USE_S3') == 'TRUE'
 
 if USE_S3:
+    print(dj_database_url.config(default=os.environ.get('DATABASE_URL')))
+    # FOR DEPLOYMENT
+    DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
+
     # aws settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
@@ -158,7 +148,16 @@ if USE_S3:
 
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = False
+
+    print(f'Bucket Name: {AWS_STORAGE_BUCKET_NAME} | Access Key ID: {AWS_ACCESS_KEY_ID}')
 else:
+    #FOR TESTING
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     DEBUG = True

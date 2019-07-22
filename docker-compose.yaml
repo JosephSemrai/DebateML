@@ -2,12 +2,12 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: postgres:latest
     ports:
-       - '5432'
+       - "5432:5432"
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
@@ -21,6 +21,7 @@ services:
     - SQL_PORT=5432
     - DATABASE=postgres
     - USE_S3=TRUE
+
     depends_on:
       - db
     links:
