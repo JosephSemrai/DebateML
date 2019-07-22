@@ -21,3 +21,4 @@ services:
     - USE_S3=TRUE
     depends_on:
       - db
+      links: - db:db
