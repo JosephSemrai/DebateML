@@ -1,42 +1,57 @@
-    
-<!DOCTYPE html>
-{% load static %}
+    <!DOCTYPE html>
+    {% load static %}
 
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>File Upload</title>
+    <html>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" type="text/css" href="{% static "uploader/css/uploader.css" %}">
-
-    <script src="{% static 'uploader/js/jquery-file-upload/jquery.ui.widget.js' %}"></script>
-    <script src="{% static 'uploader/js/jquery-file-upload/jquery.ui.widget.js' %}"></script>
-    <script src="{% static 'uploader/js/jquery-file-upload/jquery.iframe-transport.js' %}"></script>
-    <script src="{% static 'uploader/js/jquery-file-upload/jquery.fileupload.js' %}"></script>
-        <script src="{% static 'uploader/js/bg.js' %}"></script>
+    <head>
+      <meta charset="utf-8">
+      <title>DebateML | File Upload</title>
+      <script src="https://kit.fontawesome.com/e71c5dab8b.js"></script>
 
 
-    <script src="{% static 'uploader/js/jquery-file-upload/basic-upload.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<script src="https://kit.fontawesome.com/e71c5dab8b.js"></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+      </script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+      </script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{% static "uploader/css/uploader.css" %}">
 
-  </head>
-  <body>
-  <div id="home_wave">
-</div>
-    <div class="container">
-    
+      <script src="{% static 'uploader/js/jquery-file-upload/jquery.ui.widget.js' %}"></script>
+      <script src="{% static 'uploader/js/jquery-file-upload/jquery.ui.widget.js' %}"></script>
+      <script src="{% static 'uploader/js/jquery-file-upload/jquery.iframe-transport.js' %}"></script>
+      <script src="{% static 'uploader/js/jquery-file-upload/jquery.fileupload.js' %}"></script>
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+
+      <script src="{% static 'uploader/js/jquery-file-upload/basic-upload.js' %}"></script>
+
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+      <div id="home_wave">
+      </div>
+      <div class="container-fluid">
+
 
         {% block content %}
         {% endblock %}
-    </div>
-   
-  </body>
-</html>
+      </div>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js'></script>
+      <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/PixiPlugin.min.js'></script>
+      <script src="{% static 'uploader/js/bg.js' %}"></script>
+
+
+    </body>
+
+    </html>

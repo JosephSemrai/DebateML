@@ -1,16 +1,64 @@
 {% extends 'uploader/base.html' %}
 
 {% block content %}
+<div id="home_wave">
+  </div>
+<div class="d-flex flex-row justify-content-center">
+  
+<div class="d-flex flex-column overflow-auto w-25" style="max-height:100vh;">
 
 
- <div id="home_wave">
-</div>
+    <div class="card m-3">
+    
+      <div class="card-body">
+          <a href="{% url 'index' %}"><button class="btn btn-primary mb-2">  <i class="fas fa-home"></i> Go back</button></a>
+  
+        <h3>Project Description</h3>
+        <hr>
+  
+        <h4>What is this for?</h4>
+  
+        <p>We hope to decrease the amount of inequality among Debate students by providing a set of ever-adapting resources available to everyone, free of charge.</p>
+  
+        <h4>What am I doing by uploading my speeches?</h4>
+        <p>When you upload your speech, you are adding your speech to a huge dataset of other speeches which will be used to train the neural network on what a Debate speech is, underlying patterns of Debate speeches, how to write one, etc.</p>
+  
+        <h4>What are you looking for?</h4>
+        <p>Currently we are looking Congress speeches.</p>
+  
+  
+  
+       
+      </div>
+    </div>
 
-<div class="d-flex flex-column" style="max-height:100vh;">
 
-  <a href="{% url 'index' %}"><button class="btn btn-primary m-3">  <i class="fas fa-home"></i> Go back</button></a>
+    <div class="card m-3">
+      <div class="card-body">
+          <h3>FAQ</h3>
+          <hr>
+          <h4>How do I upload speeches on Google Docs?</h4>
+          <p>
+            <ol>
+              <li>Open the Google Docs Document</li>
+              <li>Click "File" on the top bar</;i>
+              <li>Click "Download As"</;i>
+              <li>Click Microsoft Word or OpenDocument Format (ODT)</;i>
+              <li>Drag the downloaded file to the box</li>
+        </ol></p>
+
+        <h4>Do you store any personal information?</h4>
+        <p>We do not store any information beside the speech that you upload. By uploading this speech, you give us permission to use your speech to train neural networks and use it in any capacity. We will never sell or use your speeches. This project is open source and can be contributed to by anyone on the GitHub repository.</p>
+
+      </div>
+    </div>
+     
    
-  <div class="card m-3"">
+     
+  </div>
+  
+  <div class="d-flex flex-column overflow-auto w-50" style="max-height:100vh;">
+      <div class="card m-3"">
           <!-- ERROR MESSAGE -->
           <div id="errorDiv" class="alert alert-danger alert-dismissable d-none">
               <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -21,13 +69,23 @@
 
 
         <div class="card-body">
-          <div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
-          <i class="fas fa-download"></i>
-          <h3>Drop Documents or Folders Here to Upload</h3>
+          <h2>Upload Congress Speeches Here</h2>
+          <hr>
+            <lottie-player 
+            src="https://assets7.lottiefiles.com/packages/lf20_UUvrir.json"  background="transparent"  speed="1"  style="width: 20%; height: 10%; margin: 0 auto;"  loop  autoplay >
+        </lottie-player>
+          <div class="well text-muted text-center" style="padding-top: 1rem;">
+              <h3>Drop Documents or Folders Here to Upload</h3>
         </div>
-        <button type="button" class="btn btn-primary js-upload-photos">
-        Upload Documents
-        </button>
+        <hr class="w-75">
+        <h4 class="text-center">or</h4>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary js-upload-photos">
+                Select Documents
+                </button>
+        </div>
+        
         
         <input id="fileupload" type="file" name="document" multiple style="display: none;" data-url="{% url 'upload' %}"
           data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
@@ -40,7 +98,7 @@
    
    
    <!-- Progress -->
-   <div class="card m-3" id="card-progress">
+   <div class="card m-3 d-none" id="card-progress">
      <div class="card-body">
        <h5 class="card-title" id="upload-title">Uploading...</h5>
        <h6 class="card-subtitle mb-2 text-muted">Thank you for helping out!</h6>
@@ -50,7 +108,7 @@
      </div>
    </div>
    
-   <div class="card m-3 overflow-auto">
+   <div class="card m-3 overflow-auto" style="min-height:40vh">
      <h4 class="m-3">Previously Uploaded Speeches</h4>
    <table id="gallery" class="table">
      <thead>
@@ -64,13 +122,15 @@
        {% for document in documents %}
        <tr>
          <td><a href="{{ document.document.url }}">{{ document.document.name }}</a></td>
-         <td><a href="">TS: {{ document.document.status }}</a></td>
+         <td>TS: {{ document.document.status }} Training... <i class="fas fa-brain"></i></td>
        </tr>
        {% endfor %}
      </tbody>
    </table>
    </div>
-   
+  </div>
 </div>
+
+
          
 {% endblock %}

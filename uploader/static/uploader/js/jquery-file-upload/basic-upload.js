@@ -1,8 +1,6 @@
 $(function () {
 
   var dataamount;
-  $('#card-progress').hide();
-
   $(".js-upload-photos").click(function () {
     $("#fileupload").click();
   });
@@ -13,7 +11,7 @@ $(function () {
     /* 1. SEND THE FILES ONE BY ONE */
     start: function (e) {
       /* 2. WHEN THE UPLOADING PROCESS STARTS, SHOW THE MODAL */
-      $('#card-progress').show();
+      $('#card-progress').removeClass('d-none');
       $("#upload-title").text("Uploading...");
     },
     add: function (e, data) {
@@ -46,7 +44,7 @@ $(function () {
     },
     stop: function (e) {
       /* 3. WHEN THE UPLOADING PROCESS FINALIZE, HIDE THE MODAL */
-      $('#card-progress').show();
+      $('#card-progress').removeClass('d-none');
       $("#upload-title").text("Finished uploading! 🎉");
     },
     progressall: function (e, data) {
@@ -61,7 +59,7 @@ $(function () {
     done: function (e, data) {
       if (data.result.is_valid) {
         $("#gallery tbody").prepend(
-          "<tr><td><a href='" + data.result.url + "'>" + data.result.name + "</a></td></tr>"
+          "<tr><td><a href='" + data.result.url + "'>" + data.result.name + "</a></td> <td>Processing...<td></tr>"
         )
       }
     }
