@@ -3,6 +3,10 @@ version: '3'
 services:
   db:
     image: postgres
+    ports:
+       - '5432'
+    networks:
+      some_network:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -21,4 +25,9 @@ services:
     - USE_S3=TRUE
     depends_on:
       - db
-      links: - db:db
+    links:
+      - db:db
+    networks:
+      some_network:
+  networks:
+   some_network:
