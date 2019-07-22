@@ -20,6 +20,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("dropOverlay").style.display = "none";
       }
   });
+
+
+window.addEventListener("drop", function (e) {
+    document.getElementById("dropOverlay").style.display = "none";
+});
+
+window.addEventListener("dragExit", function (e) {
+    document.getElementById("dropOverlay").style.display = "none";
+  
+});
+
+
 });
 
 
