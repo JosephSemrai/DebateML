@@ -155,7 +155,7 @@ if USE_S3:
     }
 
     # TODO: Possibly can be exploited
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
