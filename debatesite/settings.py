@@ -153,6 +153,9 @@ if USE_S3:
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
     }
+
+    # TODO: Possibly can be exploited
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3Boto3Storage'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
