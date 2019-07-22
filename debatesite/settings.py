@@ -133,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-USE_S3 = True
+USE_S3 = False
 
 if USE_S3:
     # aws settings

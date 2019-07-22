@@ -1,5 +1,39 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
 
+@media only screen and (max-width: 700px) and (min-width: 200px) {
+  #phoneOverlay {
+    display: block;
+  }
+}
+@media only screen and (min-width: 700px) {
+  #phoneOverlay {
+    display: none;
+  }
+}
+
+#phoneOverlay {
+  position: fixed; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 500; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+  text-align: center;
+}
+
+
+#overlayContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 .more-pens {
   position: fixed;
   left: 20px;

@@ -1,8 +1,34 @@
 {% extends 'uploader/base.html' %}
 
 {% block content %}
-<div id="home_wave">
+<div id="phoneOverlay">
+    <div id="overlayContent">
+        <div class="card">
+          <div class="card-body">
+            <h4>Please view this on a computer/bigger display.</h4>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div id="dropOverlay">
+  <div id="overlayContent">
+      <div class="card">
+        <div class="card-body">
+          <h4>Let go to upload!</h4>
+            <lottie-player 
+    src="https://assets8.lottiefiles.com/temp/lf20_bkqQaF.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay >
+</lottie-player>
+
+
+        </div>
+      </div>
   </div>
+
+</div>
+
+
+
 <div class="d-flex flex-row justify-content-center">
   
 <div class="d-flex flex-column overflow-auto w-25" style="max-height:100vh;">
@@ -24,7 +50,7 @@
         <p>When you upload your speech, you are adding your speech to a huge dataset of other speeches which will be used to train the neural network on what a Debate speech is, underlying patterns of Debate speeches, how to write one, etc.</p>
   
         <h4>What are you looking for?</h4>
-        <p>Currently we are looking Congress speeches.</p>
+        <p>We are currently looking for Congress speeches.</p>
   
   
   
