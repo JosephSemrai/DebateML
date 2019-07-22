@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'd*suj2zbl!8(%1yc)ymatx_)+e=y_&0bmhvww#him*guf$i^b5'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','debateml.herokuapp.com']
 
@@ -133,7 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-USE_S3 = False
+USE_S3 = os.getenv('USE_S3')
 
 if USE_S3:
     # aws settings
@@ -156,9 +155,13 @@ if USE_S3:
 
     # TODO: Possibly can be exploited
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = False
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    DEBUG = True
 
 
 MEDIA_URL = '/media/'
