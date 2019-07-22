@@ -3,3 +3,4 @@ psycopg2>=2.7,<3.0
 gunicorn==19.9.0
 boto3==1.9.38
 django-storages==1.7.1
+django-heroku==0.3.1
